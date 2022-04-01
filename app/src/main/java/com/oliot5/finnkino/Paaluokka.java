@@ -23,6 +23,7 @@ import javax.xml.parsers.ParserConfigurationException;
 public class Paaluokka {
     String[] theatre = new String[0];
     String[] id = new String[0];
+    String startTime, theatreName, movieName, heading;
     List<Tiedot> lista = new ArrayList<>();
     List<Tiedot> idLista = new ArrayList<>();
     Kirjasto kirjasto = new Kirjasto();
@@ -70,7 +71,7 @@ public class Paaluokka {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public ArrayList<String> readXML2(String id, String date, String time1, String time2) {
+    public ArrayList<String> readXML2(String id, String date, String time1, String time2, String movie) {
         ArrayList<String> lista2 = new ArrayList<>();
         String bwoah;
         LocalTime timeA, timeB, timeMovie;
@@ -102,31 +103,43 @@ public class Paaluokka {
                 if(node.getNodeType() == Node.ELEMENT_NODE) {
                     Element element = (Element) node;
 
-
                     bwoah = element.getElementsByTagName("dttmShowStart").item(0).getTextContent();
                     String[] arrOfStr = bwoah.split("T");
                     bwoah = arrOfStr[1];
+
+                    //picking up starting time
+                    startTime = bwoah;
+
                     arrOfStr = bwoah.split(":");
+
                     int hours1 = Integer.parseInt(arrOfStr[0]);
                     int minutes1 = Integer.parseInt(arrOfStr[1]);
                     timeMovie = LocalTime.of(hours1,minutes1);
+
                     // timeA pitää olla pienempi kuin timeMovie
                     int returnVal1 = timeA.compareTo(timeMovie);
                     //timeB pitää olla suurempi kuin timeMovie
                     int returnVal2 = timeB.compareTo(timeMovie);
 
-                    if(returnVal1 <= 0 && returnVal2 >= 0) {
-                        lista2.add(element.getElementsByTagName("Title").item(0).getTextContent());
-                        System.out.println("aikayksikkö");
+                    movieName = element.getElementsByTagName("Title").item(0).getTextContent();
+
+                    // when the "Elokuvan nimi/ Movie name" field is empty – this if statement is TRUE
+                    if(returnVal1 <= 0 && returnVal2 >= 0 && movie.isEmpty()) {
+                        lista2.add(movieName);
+
+                    // adds location and time information for the asked movie to lista2
+                    } else {
+                        if(movieName.equals(movie)){
+                            if(!(movieName.equals(heading))){
+                                lista2.add(movieName);
+                                heading = movieName;
+                            }
+                            theatreName = element.getElementsByTagName("Theatre").item(0).getTextContent();
+                            lista2.add(theatreName + ": " + startTime);
+                        }
                     }
-
-
-
-                    System.out.println("moi2");
-
                 }
             }
-
 
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
