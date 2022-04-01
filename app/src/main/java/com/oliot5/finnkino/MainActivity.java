@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     String date;
     String time1 = "00:00";
     String time2 = "23:59";
+    String movie = "";
     TextView textView;
     Button hae;
     int idSelecter;
@@ -52,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             textView.setText(date);
             time1 = editTextTime.getText().toString();
             time2 = editTextTime2.getText().toString();
+            movie = editTextMovie.getText().toString();
+
         }
 
         @Override
@@ -80,6 +83,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         editTextTime2.addTextChangedListener(textWatcher);
 
         editTextMovie = (EditText) findViewById(R.id.editTextMovie);
+        editTextMovie.addTextChangedListener(textWatcher);
+
         listView = (ListView) findViewById(R.id.listView);
 
         spinner = (Spinner) findViewById(R.id.spinner);
@@ -101,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
 
 
-        ArrayList<String> arrayList = pLuokka.readXML2(id[i], date, time1, time2);
+        ArrayList<String> arrayList = pLuokka.readXML2(id[i], date, time1, time2, movie);
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,arrayList);
         listView.setAdapter(arrayAdapter);
     }
@@ -113,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void pressButton(View v) {
-        ArrayList<String> arrayList = pLuokka.readXML2(id[idSelecter], date, time1, time2);
+        ArrayList<String> arrayList = pLuokka.readXML2(id[idSelecter], date, time1, time2, movie);
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,arrayList);
         listView.setAdapter(arrayAdapter);
     }
