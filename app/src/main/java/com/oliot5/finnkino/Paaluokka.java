@@ -116,9 +116,9 @@ public class Paaluokka {
                     int minutes1 = Integer.parseInt(arrOfStr[1]);
                     timeMovie = LocalTime.of(hours1,minutes1);
 
-                    // timeA pitää olla pienempi kuin timeMovie
+                    // timeA must be smaller than timeMovie
                     int returnVal1 = timeA.compareTo(timeMovie);
-                    //timeB pitää olla suurempi kuin timeMovie
+                    //timeB must be grater than timeMovie
                     int returnVal2 = timeB.compareTo(timeMovie);
 
                     movieName = element.getElementsByTagName("Title").item(0).getTextContent();
