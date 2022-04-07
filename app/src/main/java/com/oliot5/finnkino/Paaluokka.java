@@ -23,7 +23,7 @@ import javax.xml.parsers.ParserConfigurationException;
 public class Paaluokka {
     String[] theatre = new String[0];
     String[] id = new String[0];
-    String startTime, theatreName, movieName, heading;
+    String startTime, theatreName, movieName;
     List<Tiedot> lista = new ArrayList<>();
     List<Tiedot> idLista = new ArrayList<>();
     Kirjasto kirjasto = new Kirjasto();
@@ -72,9 +72,10 @@ public class Paaluokka {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public ArrayList<String> readXML2(String id, String date, String time1, String time2, String movie) {
-        ArrayList<String> lista2 = new ArrayList<>();
         String bwoah;
+        int j = 0;
         LocalTime timeA, timeB, timeMovie;
+        ArrayList<String> lista2 = new ArrayList<>();
 
         if(time1.isEmpty()) {
             time1 = "00:00";
@@ -123,21 +124,22 @@ public class Paaluokka {
 
                     movieName = element.getElementsByTagName("Title").item(0).getTextContent();
 
-                    // when the "Elokuvan nimi/ Movie name" field is empty – this if statement is TRUE
+                    // when the "Elokuvan nimi/ Movie name" field is empty – this if statement is true
+                    // -> only movie name is added to lista2
                     if(returnVal1 <= 0 && returnVal2 >= 0 && movie.isEmpty()) {
                         lista2.add(movieName);
-
-                    // adds location and time information for the asked movie to lista2
-                    } else {
-                        if(movieName.equals(movie)){
-                            if(!(movieName.equals(heading))){
-                                lista2.add(movieName);
-                                heading = movieName;
-                            }
-                            theatreName = element.getElementsByTagName("Theatre").item(0).getTextContent();
-                            lista2.add(theatreName + ": " + startTime);
-                        }
                     }
+
+                    // adds movie name (once), location and time information for the asked movie to lista2
+                    if(returnVal1 <= 0 && returnVal2 >= 0 && movieName.equals(movie)){
+                        if(j == 0){
+                            lista2.add(movieName);
+                            j++;
+                        }
+                        theatreName = element.getElementsByTagName("Theatre").item(0).getTextContent();
+                        lista2.add(theatreName + ": " + startTime);
+                    }
+
                 }
             }
 
@@ -151,6 +153,11 @@ public class Paaluokka {
             System.out.println("******TOKA TOIMII*******");
         }
         return lista2;
+    }
+
+    public void saveEntries(String entry){
+        System.out.println("Ollaan saveEntries metodissa ja entry on: " + entry);
+
     }
 
 }
