@@ -33,13 +33,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     Paaluokka pLuokka = new Paaluokka();
     ListView listView;
     Spinner spinner;
-    String date;
+    String date, entry;
     String time1 = "00:00";
     String time2 = "23:59";
     String movie = "";
     TextView textView;
     Button hae;
     int idSelecter;
+    ArrayList<String> tmp = new ArrayList<>();
 
     private  TextWatcher textWatcher = new TextWatcher() {
         @Override
@@ -85,8 +86,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         editTextMovie = (EditText) findViewById(R.id.editTextMovie);
         editTextMovie.addTextChangedListener(textWatcher);
 
-        listView = (ListView) findViewById(R.id.listView);
-
         spinner = (Spinner) findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);
 
@@ -96,6 +95,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spinner.setAdapter(aa);
+
+        // Movie (Listview) selection functionality
+        listView = (ListView) findViewById(R.id.listView);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                int index = position;
+                entry = tmp.get(index);
+                Toast.makeText(getApplicationContext(), "Valittu elokuva " + tmp.get(index), Toast.LENGTH_LONG).show();
+                pLuokka.saveEntries(entry);
+            }
+        });
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -118,8 +129,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void pressButton(View v) {
-        ArrayList<String> arrayList = pLuokka.readXML2(id[idSelecter], date, time1, time2, movie);
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,arrayList);
+        ArrayList<String> lista2 = pLuokka.readXML2(id[idSelecter], date, time1, time2, movie);
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,lista2);
         listView.setAdapter(arrayAdapter);
+        tmp = lista2;
     }
 }
