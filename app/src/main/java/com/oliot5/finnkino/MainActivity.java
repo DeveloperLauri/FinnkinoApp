@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,17 +31,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     EditText editTextTime;
     EditText editTextTime2;
     EditText editTextMovie;
-    Paaluokka pLuokka = new Paaluokka();
+    MovieManager pLuokka = new MovieManager();
     ListView listView;
     Spinner spinner;
-    String date, entry;
+    String date, entry, comment, movieName;
     String time1 = "00:00";
     String time2 = "23:59";
     String movie = "";
-    TextView textView;
+    TextView textView, printStars;
     Button hae;
-    int idSelecter;
+    int idSelecter, howManyStars;
     ArrayList<String> tmp = new ArrayList<>();
+    SeekBar seekBar;
 
     private  TextWatcher textWatcher = new TextWatcher() {
         @Override
@@ -102,9 +104,31 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 int index = position;
-                entry = tmp.get(index);
-                Toast.makeText(getApplicationContext(), "Valittu elokuva " + tmp.get(index), Toast.LENGTH_LONG).show();
-                pLuokka.saveEntries(entry);
+                movieName = tmp.get(index);
+                Toast.makeText(getApplicationContext(), "Valittu elokuva " + movieName, Toast.LENGTH_LONG).show();
+                pLuokka.saveEntries(movieName, comment, howManyStars);
+            }
+        });
+
+        //seekbar functionality
+        printStars = (TextView) findViewById(R.id.textViewStars);
+        seekBar = (SeekBar) findViewById(R.id.seekBar);
+        seekBar.setMax(5);
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
+                howManyStars = progress;
+                printStars.setText(""+howManyStars+" stars");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
             }
         });
     }
@@ -114,8 +138,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         idSelecter = i;
         Toast.makeText(getApplicationContext(),theatre[i] , Toast.LENGTH_LONG).show();
-
-
 
         ArrayList<String> arrayList = pLuokka.readXML2(id[i], date, time1, time2, movie);
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,arrayList);

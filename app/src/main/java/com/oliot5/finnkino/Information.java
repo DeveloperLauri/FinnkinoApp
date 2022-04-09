@@ -1,10 +1,10 @@
 package com.oliot5.finnkino;
 
-public class Tiedot {
+public class Information {
     private String ID;
     private String theatreName;
 
-    public Tiedot(String id, String tName) {
+    public Information(String id, String tName) {
         ID = id;
         theatreName = tName;
     }

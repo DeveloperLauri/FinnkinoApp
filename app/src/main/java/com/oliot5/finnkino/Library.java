@@ -4,10 +4,10 @@ package com.oliot5.finnkino;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Kirjasto {
+public class Library {
     private String ID;
     private String theatreName;
-    ArrayList<Tiedot> arrayLista = new ArrayList<>();
+    ArrayList<Information> arrayLista = new ArrayList<>();
     List<String> movieLista = new ArrayList<>();
     List<String> idLista = new ArrayList<>();
 
@@ -15,7 +15,7 @@ public class Kirjasto {
     public void AddToList (String id, String tName) {
         ID = id;
         theatreName = tName;
-        arrayLista.add(new Tiedot(ID, theatreName));
+        arrayLista.add(new Information(ID, theatreName));
     }
     public List getMovieList() {
         for (int i = 0; i < arrayLista.size(); i++) {

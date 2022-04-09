@@ -20,13 +20,14 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-public class Paaluokka {
+public class MovieManager {
     String[] theatre = new String[0];
     String[] id = new String[0];
     String startTime, theatreName, movieName;
-    List<Tiedot> lista = new ArrayList<>();
-    List<Tiedot> idLista = new ArrayList<>();
-    Kirjasto kirjasto = new Kirjasto();
+    List<Information> lista = new ArrayList<>();
+    List<Information> idLista = new ArrayList<>();
+    Library kirjasto = new Library();
+    private Entry entry;
 
     public String[] readXML() {
         try {
@@ -155,9 +156,10 @@ public class Paaluokka {
         return lista2;
     }
 
-    public void saveEntries(String entry){
-        System.out.println("Ollaan saveEntries metodissa ja entry on: " + entry);
-
+    public void saveEntries(String movie, String comment, int stars){
+        System.out.println("Ollaan saveEntries metodissa ja entry on: " + movie + " ja tähdet: " + stars);
+        entry = new Entry(stars);
+        System.out.println("Testaan tähtien tulostamista "+entry.getAmountOfStars());
     }
 
 }
