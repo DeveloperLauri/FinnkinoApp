@@ -19,7 +19,7 @@ public class MainActivity2 extends AppCompatActivity {
         View.OnClickListener listener = new View.OnClickListener() {
             Fragment fragment;
 
-            @Override
+            @Override // Button activity
             public void onClick(View view) {
                 if ( view == findViewById(R.id.MovieManagerButton)){
                     System.out.println("Moikka");
