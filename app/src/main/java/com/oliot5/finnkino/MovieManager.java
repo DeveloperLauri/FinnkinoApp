@@ -156,9 +156,9 @@ public class MovieManager {
         return lista2;
     }
 
-    public void saveEntries(String movie, String comment, int stars){
+    public void saveEntries(String movie, int stars){
         System.out.println("Ollaan saveEntries metodissa ja entry on: " + movie + " ja tähdet: " + stars);
-        entry = new Entry(stars);
+        entry = new Entry(stars, movie);
         System.out.println("Testaan tähtien tulostamista "+entry.getAmountOfStars());
     }
 

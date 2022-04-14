@@ -21,6 +21,8 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class Fragment_Main extends Fragment {
@@ -127,7 +129,12 @@ public class Fragment_Main extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 int index = position;
                 movieName = tmp.get(index);
-                pLuokka.saveEntries(movieName, comment, howManyStars);
+
+
+
+                pLuokka.saveEntries(movieName, howManyStars);
+
+
             }
         });
 
