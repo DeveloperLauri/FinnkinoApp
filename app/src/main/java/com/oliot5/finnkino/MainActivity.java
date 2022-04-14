@@ -56,4 +56,18 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, MainActivity2.class);
         startActivity(intent);
     }
+    @Override
+    public void onStart() {
+        super.onStart();
+        try {
+            String text = getIntent().getExtras().get("key").toString();
+            System.out.println("#########"+text+"#####");
+
+
+
+        } catch (Exception e) {
+
+        }
+
+    }
 }
