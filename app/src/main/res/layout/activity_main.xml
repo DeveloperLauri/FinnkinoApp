@@ -26,12 +26,32 @@
         </FrameLayout>
 
         <Button
-            android:id="@+id/login_button"
+            android:id="@+id/ActivityChangeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="logIn"
-            android:text="LOGIN"
+            android:text="vaihto"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/buttonToRegistrate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:text="Registeration"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/buttonToLogIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:text="Login"
+            app:layout_constraintEnd_toStartOf="@+id/buttonToRegistrate"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

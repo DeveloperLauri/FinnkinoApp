@@ -9,11 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -27,15 +23,18 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
 
 
-        /*View.OnClickListener listener = new View.OnClickListener() {
+        View.OnClickListener listener = new View.OnClickListener() {
             Fragment fragment;
 
             @Override
             public void onClick(View view) {
-                if ( view == findViewById(R.id.login_button)){
+                if ( view == findViewById(R.id.buttonToLogIn)){
                     System.out.println("Moikka");
-                    fragment = new Fragment_Main();
-                } else {
+                    fragment = new Fragment_login();
+                } else if ( view == findViewById(R.id.buttonToRegistrate)) {
+                    fragment = new Fragment_register();
+                }
+                else {
                     System.out.println("Help me!");
                 }
 
@@ -46,9 +45,11 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        Button btn = findViewById(R.id.login_button);
-        btn.setOnClickListener(listener);
-        */
+        Button buttonToLogin = findViewById(R.id.buttonToLogIn);
+        buttonToLogin.setOnClickListener(listener);
+        Button buttonToRegister = findViewById(R.id.buttonToRegistrate);
+        buttonToRegister.setOnClickListener(listener);
+
     }
 
     public void logIn(View v) {
