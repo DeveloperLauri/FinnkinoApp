@@ -1,5 +1,6 @@
 package com.oliot5.finnkino;
 
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
@@ -21,9 +22,27 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
+import org.w3c.dom.Document;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.StringReader;
+import java.io.StringWriter;
 import java.util.ArrayList;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 public class Fragment_Main extends Fragment {
 
@@ -47,6 +66,7 @@ public class Fragment_Main extends Fragment {
     int idSelecter, howManyStars;
     ArrayList<String> tmp = new ArrayList<>();
     SeekBar seekBar;
+
 
     private TextWatcher textWatcher = new TextWatcher() {
         @Override
@@ -129,12 +149,64 @@ public class Fragment_Main extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 int index = position;
                 movieName = tmp.get(index);
+                Document doc = null;
 
+                String string = "";
+                InputStream inputStream = null;
+                try {
+                    inputStream = getContext().getAssets().open("data.xml");
+                    int size = inputStream.available();
+                    byte[] buffer = new byte[size];
+                    inputStream.read(buffer);
+                    string = new String(buffer);
+                    System.out.println("Tiedoston avaaminen onnistui!");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
+                string = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
+                        "<Emp id=\"1\"><name>Pankaj</name><age>25</age>\n" +
+                        "<role>Developer</role><gen>Male</gen></Emp>";
+
+                DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+                DocumentBuilder builder;
+
+                //Convert String to document
+                try {
+                    builder = factory.newDocumentBuilder();
+                    doc = builder.parse(new InputSource(new StringReader(string)));
+                } catch (ParserConfigurationException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (SAXException e) {
+                    e.printStackTrace();
+                }
+
+                //Convert document to string
+                TransformerFactory tf = TransformerFactory.newInstance();
+                Transformer transformer;
+
+                String output = null;
+                try {
+                    transformer = tf.newTransformer();
+                    StringWriter writer = new StringWriter();
+                    transformer.transform(new DOMSource(doc), new StreamResult(writer));
+                    output = writer.getBuffer().toString();
+                } catch (TransformerConfigurationException e) {
+                    e.printStackTrace();
+                } catch (TransformerException e) {
+                    e.printStackTrace();
+                }
+
+                try {
+                    BufferedWriter writer = new BufferedWriter(new FileWriter("data.xml",true));
+                    writer.append("testi");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
                 pLuokka.saveEntries(movieName, howManyStars);
-
-
             }
         });
 
