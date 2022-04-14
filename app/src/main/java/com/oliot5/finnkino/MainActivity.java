@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
 
 
-        View.OnClickListener listener = new View.OnClickListener() {
+        /*View.OnClickListener listener = new View.OnClickListener() {
             Fragment fragment;
 
             @Override
@@ -44,6 +45,11 @@ public class MainActivity extends AppCompatActivity {
 
         Button btn = findViewById(R.id.login_button);
         btn.setOnClickListener(listener);
+        */
+    }
 
+    public void logIn(View v) {
+        Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+        startActivity(intent);
     }
 }
