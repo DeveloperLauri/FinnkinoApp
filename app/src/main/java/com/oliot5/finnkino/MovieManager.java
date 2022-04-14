@@ -1,6 +1,7 @@
 package com.oliot5.finnkino;
 
 
+import android.content.Context;
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;
@@ -12,6 +13,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -156,10 +158,11 @@ public class MovieManager {
         return lista2;
     }
 
-    public void saveEntries(String movie, String comment, int stars){
+    public void saveEntries(String movie, int stars){
         System.out.println("Ollaan saveEntries metodissa ja entry on: " + movie + " ja tähdet: " + stars);
-        entry = new Entry(stars);
+        entry = new Entry(stars, movie);
         System.out.println("Testaan tähtien tulostamista "+entry.getAmountOfStars());
+
     }
 
 }
