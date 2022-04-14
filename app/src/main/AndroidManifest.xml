@@ -13,8 +13,13 @@
         android:theme="@style/Theme.Finnkino">
 
         <activity
+            android:name=".MainActivity2"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">></activity>
+        <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
