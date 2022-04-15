@@ -22,16 +22,23 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
+import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -57,7 +64,7 @@ public class Fragment_Main extends Fragment {
     MovieManager pLuokka = new MovieManager();
     ListView listView;
     Spinner spinner;
-    String date, entry, comment, movieName;
+    String date, username = "", fileName = "", movieName;
     String time1 = "00:00";
     String time2 = "23:59";
     String movie = "";
@@ -149,24 +156,30 @@ public class Fragment_Main extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 int index = position;
                 movieName = tmp.get(index);
-                Document doc = null;
+                Document document = null;
+                fileName = username + ".xml";
+
+                //this row will be deleted when username functionality is working
+                fileName = "user1.xml";
 
                 String string = "";
                 InputStream inputStream = null;
                 try {
-                    inputStream = getContext().getAssets().open("data.xml");
+//                    inputStream = getContext().getAssets().open("data.xml");
+                    inputStream = getContext().openFileInput(fileName);
                     int size = inputStream.available();
                     byte[] buffer = new byte[size];
                     inputStream.read(buffer);
                     string = new String(buffer);
+                    inputStream.close();
                     System.out.println("Tiedoston avaaminen onnistui!");
+                    System.out.println(string);
                 } catch (IOException e) {
                     e.printStackTrace();
+                    string = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
+                            "<MovieInformation>\n" +
+                            "</MovieInformation>";
                 }
-
-                string = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
-                        "<Emp id=\"1\"><name>Pankaj</name><age>25</age>\n" +
-                        "<role>Developer</role><gen>Male</gen></Emp>";
 
                 DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
                 DocumentBuilder builder;
@@ -174,7 +187,7 @@ public class Fragment_Main extends Fragment {
                 //Convert String to document
                 try {
                     builder = factory.newDocumentBuilder();
-                    doc = builder.parse(new InputSource(new StringReader(string)));
+                    document = builder.parse(new InputSource(new StringReader(string)));
                 } catch (ParserConfigurationException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
@@ -182,6 +195,21 @@ public class Fragment_Main extends Fragment {
                 } catch (SAXException e) {
                     e.printStackTrace();
                 }
+
+                Element root = document.getDocumentElement();
+
+                Attr attr = document.createAttribute("Id");
+                attr.setValue("1");
+                root.setAttributeNode(attr);
+
+                Element name = document.createElement("movieName");
+                name.appendChild(document.createTextNode(movieName));
+                root.appendChild(name);
+
+                Element amountOfStars = document.createElement("stars");
+
+                amountOfStars.appendChild(document.createTextNode(Integer.toString(howManyStars)));
+                root.appendChild(amountOfStars);
 
                 //Convert document to string
                 TransformerFactory tf = TransformerFactory.newInstance();
@@ -191,7 +219,7 @@ public class Fragment_Main extends Fragment {
                 try {
                     transformer = tf.newTransformer();
                     StringWriter writer = new StringWriter();
-                    transformer.transform(new DOMSource(doc), new StreamResult(writer));
+                    transformer.transform(new DOMSource(document), new StreamResult(writer));
                     output = writer.getBuffer().toString();
                 } catch (TransformerConfigurationException e) {
                     e.printStackTrace();
@@ -199,14 +227,15 @@ public class Fragment_Main extends Fragment {
                     e.printStackTrace();
                 }
 
+                System.out.println(output);
+
                 try {
-                    BufferedWriter writer = new BufferedWriter(new FileWriter("data.xml",true));
-                    writer.append("testi");
+                    FileOutputStream writer = getContext().openFileOutput(fileName,0);
+                    writer.write(output.getBytes());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
-                pLuokka.saveEntries(movieName, howManyStars);
+//                pLuokka.saveEntries(movieName, howManyStars);
             }
         });
 
