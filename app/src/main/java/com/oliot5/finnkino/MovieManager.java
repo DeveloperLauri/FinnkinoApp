@@ -1,7 +1,6 @@
 package com.oliot5.finnkino;
 
 
-import android.content.Context;
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;
@@ -158,10 +157,99 @@ public class MovieManager {
         return lista2;
     }
 
-    public void saveEntries(String movie, int stars){
-        System.out.println("Ollaan saveEntries metodissa ja entry on: " + movie + " ja tähdet: " + stars);
-        entry = new Entry(stars, movie);
-        System.out.println("Testaan tähtien tulostamista "+entry.getAmountOfStars());
+    public void saveEntries(String movie, int stars, String fileName){
+//        System.out.println("Ollaan saveEntries metodissa ja entry on: " + movie + " ja tähdet: " + stars);
+//        entry = new Entry(stars, movie);
+//        System.out.println("Testaan tähtien tulostamista "+entry.getAmountOfStars());
+
+//        this row will be deleted when username functionality is working
+//            fileName = "data2.xml";
+//            Document document = null;
+//            String string = "";
+//            InputStream inputStream = null;
+//            try {
+////                    inputStream = getContext().getAssets().open("data.xml");
+//                inputStream = getContext().openFileInput(fileName);
+//                int size = inputStream.available();
+//                byte[] buffer = new byte[size];
+//                inputStream.read(buffer);
+//                string = new String(buffer);
+//                inputStream.close();
+//                System.out.println("Tiedoston avaaminen onnistui!");
+//                System.out.println(string);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//                string = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
+//                        "<MovieInformation>\n" +
+//                        "</MovieInformation>";
+//            }
+//
+//            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+//            DocumentBuilder builder;
+//
+//            //Convert String to document
+//            try {
+//                builder = factory.newDocumentBuilder();
+//                document = builder.parse(new InputSource(new StringReader(string)));
+//            } catch (ParserConfigurationException e) {
+//                e.printStackTrace();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            } catch (SAXException e) {
+//                e.printStackTrace();
+//            }
+//
+//            Element root = document.getDocumentElement();
+////                Element newMovie = document.createElement("TestiNimi");
+////
+////                root.appendChild(newMovie);
+//
+////                Element root = document.createElement("MovieInformation");
+////                document.appendChild(root);
+////
+//            Attr attr = document.createAttribute("Id");
+//            attr.setValue("1");
+//            root.setAttributeNode(attr);
+////
+//            Element name = document.createElement("movieName");
+//            name.appendChild(document.createTextNode(movieName));
+//            root.appendChild(name);
+////
+//            Element amountOfStars = document.createElement("stars");
+//
+//            amountOfStars.appendChild(document.createTextNode(Integer.toString(howManyStars)));
+//            root.appendChild(amountOfStars);
+//
+//            //Convert document to string
+//            TransformerFactory tf = TransformerFactory.newInstance();
+//            Transformer transformer;
+//
+//            String output = null;
+//            try {
+//                transformer = tf.newTransformer();
+//                StringWriter writer = new StringWriter();
+//                transformer.transform(new DOMSource(document), new StreamResult(writer));
+//                output = writer.getBuffer().toString();
+//            } catch (TransformerConfigurationException e) {
+//                e.printStackTrace();
+//            } catch (TransformerException e) {
+//                e.printStackTrace();
+//            }
+//
+//            System.out.println(output);
+//
+////                try {
+////                    getContext().openFileInput("data.xml");
+////                } catch (FileNotFoundException e) {
+////                    e.printStackTrace();
+////                }
+//
+//            try {
+//                FileOutputStream writer = getContext().openFileOutput(fileName,0);
+//                writer.write(output.getBytes());
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
 
     }
 
