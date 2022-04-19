@@ -196,20 +196,27 @@ public class Fragment_Main extends Fragment {
                     e.printStackTrace();
                 }
 
+                //root element
                 Element root = document.getDocumentElement();
 
-                Attr attr = document.createAttribute("Id");
-                attr.setValue("1");
-                root.setAttributeNode(attr);
+//                Attr attr = document.createAttribute("Id");
+//                attr.setValue("1");
+//                root.setAttributeNode(attr);
 
-                Element name = document.createElement("movieName");
-                name.appendChild(document.createTextNode(movieName));
-                root.appendChild(name);
+                //movie element
+                Element film = document.createElement("movie");
+//                name.appendChild(document.createTextNode(movieName));
+                root.appendChild(film);
 
+                //child: movie name
+                Element filmName = document.createElement("MovieName");
+                filmName.appendChild(document.createTextNode(movieName));
+                film.appendChild(filmName);
+
+                //child: stars
                 Element amountOfStars = document.createElement("stars");
-
                 amountOfStars.appendChild(document.createTextNode(Integer.toString(howManyStars)));
-                root.appendChild(amountOfStars);
+                film.appendChild(amountOfStars);
 
                 //Convert document to string
                 TransformerFactory tf = TransformerFactory.newInstance();
