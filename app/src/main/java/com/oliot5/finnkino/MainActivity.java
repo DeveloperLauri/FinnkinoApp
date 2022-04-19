@@ -56,6 +56,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, MainActivity2.class);
         startActivity(intent);
     }
+
+
+
+    // Method to do info change in between frag and activ
     @Override
     public void onStart() {
         super.onStart();

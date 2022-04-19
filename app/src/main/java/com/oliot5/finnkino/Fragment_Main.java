@@ -61,7 +61,7 @@ public class Fragment_Main extends Fragment {
     EditText editTextTime;
     EditText editTextTime2;
     EditText editTextMovie;
-    MovieManager pLuokka = new MovieManager();
+    MovieManager mClass = new MovieManager();
     ListView listView;
     Spinner spinner;
     String date, username = "", fileName = "", movieName;
@@ -109,8 +109,8 @@ public class Fragment_Main extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        theatre = pLuokka.readXML();
-        id = pLuokka.getIDList();
+        theatre = mClass.readXML();
+        id = mClass.getIDList();
         textView = (TextView) this.view.findViewById(R.id.textView);
         editTextDate = (EditText) this.view.findViewById(R.id.editTextDate);
         editTextDate.addTextChangedListener(textWatcher);
@@ -138,7 +138,7 @@ public class Fragment_Main extends Fragment {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 idSelecter = i;
 
-                ArrayList<String> arrayList = pLuokka.readXML2(id[i], date, time1, time2, movie);
+                ArrayList<String> arrayList = mClass.readXML2(id[i], date, time1, time2, movie);
                 ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1,arrayList);
                 listView.setAdapter(arrayAdapter);
             }
@@ -260,18 +260,18 @@ public class Fragment_Main extends Fragment {
 
             }
         });
-        Button haeButton = (Button) this.view.findViewById(R.id.button);
+        Button searchButton = (Button) this.view.findViewById(R.id.button);
         View.OnClickListener listener2 = new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
-                ArrayList<String> lista2 = pLuokka.readXML2(id[idSelecter], date, time1, time2, movie);
+                ArrayList<String> lista2 = mClass.readXML2(id[idSelecter], date, time1, time2, movie);
                 ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1,lista2);
                 listView.setAdapter(arrayAdapter);
                 tmp = lista2;
             }
         };
-        haeButton.setOnClickListener(listener2);
+        searchButton.setOnClickListener(listener2);
     }
 
 }
