@@ -25,9 +25,9 @@ public class MovieManager {
     String[] theatre = new String[0];
     String[] id = new String[0];
     String startTime, theatreName, movieName;
-    List<Information> lista = new ArrayList<>();
-    List<Information> idLista = new ArrayList<>();
-    Library kirjasto = new Library();
+    List<Information> list = new ArrayList<>();
+    List<Information> idList = new ArrayList<>();
+    Library library = new Library();
     private Entry entry;
 
     public String[] readXML() {
@@ -47,13 +47,13 @@ public class MovieManager {
 
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element element = (Element) node;
-                    kirjasto.AddToList(element.getElementsByTagName("ID").item(0).getTextContent(), element.getElementsByTagName("Name").item(0).getTextContent());
+                    library.AddToList(element.getElementsByTagName("ID").item(0).getTextContent(), element.getElementsByTagName("Name").item(0).getTextContent());
                 }
             }
-            lista = kirjasto.getMovieList();
-            theatre = lista.toArray(new String[lista.size()]);
-            idLista = kirjasto.getIdList();
-            id = idLista.toArray(new String[lista.size()]);
+            list = library.getMovieList();
+            theatre = list.toArray(new String[list.size()]);
+            idList = library.getIdList();
+            id = idList.toArray(new String[list.size()]);
 
 
 

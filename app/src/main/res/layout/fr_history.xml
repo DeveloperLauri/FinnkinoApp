@@ -7,9 +7,8 @@
 
     <ListView
         android:id="@+id/clickedMoviesListview"
-        android:layout_width="424dp"
-        android:layout_height="638dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="421dp"
+        android:layout_height="545dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,8 +17,8 @@
 
     <Button
         android:id="@+id/searchHistoryButton"
-        android:layout_width="114dp"
-        android:layout_height="57dp"
+        android:layout_width="102dp"
+        android:layout_height="53dp"
         android:text="HAE"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

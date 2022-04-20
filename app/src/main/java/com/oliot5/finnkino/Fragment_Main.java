@@ -154,6 +154,7 @@ public class Fragment_Main extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
                 int index = position;
                 movieName = tmp.get(index);
                 Document document = null;
@@ -165,7 +166,7 @@ public class Fragment_Main extends Fragment {
                 String string = "";
                 InputStream inputStream = null;
                 try {
-//                    inputStream = getContext().getAssets().open("data.xml");
+                    //inputStream = getContext().getAssets().open(fileName);
                     inputStream = getContext().openFileInput(fileName);
                     int size = inputStream.available();
                     byte[] buffer = new byte[size];

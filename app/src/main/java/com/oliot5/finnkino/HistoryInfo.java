@@ -9,6 +9,11 @@ public class HistoryInfo {
         stars = star;
     }
 
+    @Override
+    public String toString() {
+        return movieName+",    Stars: "+stars;
+    }
+
     public String getMovieName(){ return movieName; }
     public String getStars(){ return stars; }
 }
