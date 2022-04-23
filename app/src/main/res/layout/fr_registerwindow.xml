@@ -45,7 +45,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextPasswordRegister" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/registerButton"
         android:layout_width="121dp"
         android:layout_height="58dp"
         android:layout_marginTop="44dp"
@@ -54,4 +54,13 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPasswordAgainRegister" />
+
+    <TextView
+        android:id="@+id/passwordCheckWindowRegister"
+        android:layout_width="217dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -52,9 +52,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void logIn(View v) {
+    public void logIn(String un) {
         Intent intent = new Intent(MainActivity.this, MainActivity2.class);
-        startActivity(intent);
+        intent.putExtra("key", un);
+        System.out.println(un);
+        startActivityForResult(intent, 1);
+        //startActivity(intent);
     }
 
 
@@ -66,6 +69,12 @@ public class MainActivity extends AppCompatActivity {
         try {
             String text = getIntent().getExtras().get("key").toString();
             System.out.println("#########"+text+"#####");
+            logIn(text);
+            /*if(text.equals("1")) {
+                System.out.println("hyvä");
+                text = "";
+                logIn(text);
+            }*/
 
 
 
@@ -73,5 +82,15 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                String value = data.getStringExtra("key");
+                System.out.println(value);
+            }
+        }
     }
 }

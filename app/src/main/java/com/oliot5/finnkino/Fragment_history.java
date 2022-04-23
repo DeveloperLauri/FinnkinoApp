@@ -33,6 +33,8 @@ public class Fragment_history extends Fragment {
     ListView listView;
     Button getHistory;
     ArrayList<HistoryInfo> historyInfoArrayList = new ArrayList<HistoryInfo>();
+    String fileName = "";
+    String username = "";
 
     @Nullable
     @Override
@@ -43,6 +45,13 @@ public class Fragment_history extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        try {
+            username = getArguments().getString("key");
+            System.out.println(username);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         getHistory = (Button) this.view.findViewById(R.id.searchHistoryButton);
         listView = (ListView) this.view.findViewById(R.id.clickedMoviesListview);
 
@@ -52,11 +61,11 @@ public class Fragment_history extends Fragment {
 
                 System.out.println("Nappi toimii");
                 HistoryLibrary hLibrary = new HistoryLibrary();
-
+                fileName = username + ".xml";
                 String[] movieNameList = new String[0];
                 Context context = getActivity().getApplicationContext();
                 try {
-                    File file = new File(context.getFilesDir(), "user1.xml");
+                    File file = new File(context.getFilesDir(), fileName);
                     DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
                     DocumentBuilder db = dbf.newDocumentBuilder();

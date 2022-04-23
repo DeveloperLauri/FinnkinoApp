@@ -109,14 +109,23 @@ public class Fragment_Main extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        try {
+            username = getArguments().getString("key");
+            System.out.println(username);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         theatre = mClass.readXML();
         id = mClass.getIDList();
         textView = (TextView) this.view.findViewById(R.id.textView);
+
         editTextDate = (EditText) this.view.findViewById(R.id.editTextDate);
         editTextDate.addTextChangedListener(textWatcher);
 
         editTextTime = (EditText) this.view.findViewById(R.id.editTextTime);
         editTextTime.addTextChangedListener(textWatcher);
+
         editTextTime2 = (EditText) this.view.findViewById(R.id.editTextTime2);
         editTextTime2.addTextChangedListener(textWatcher);
 
@@ -161,7 +170,8 @@ public class Fragment_Main extends Fragment {
                 fileName = username + ".xml";
 
                 //this row will be deleted when username functionality is working
-                fileName = "user1.xml";
+                //fileName = "user1.xml";
+                System.out.println(fileName);
 
                 String string = "";
                 InputStream inputStream = null;
@@ -273,6 +283,7 @@ public class Fragment_Main extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
+                System.out.println(username);
                 ArrayList<String> lista2 = mClass.readXML2(id[idSelecter], date, time1, time2, movie);
                 ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1,lista2);
                 listView.setAdapter(arrayAdapter);
