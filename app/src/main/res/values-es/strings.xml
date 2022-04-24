@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- to support Spanish language -->
+    <string name="app_name">Finnkino</string>
+
+    <string name="change">Cambiar</string>
+    <string name="login">iniciar sesión</string>
+    <string name="register">Registrarse</string>
+    <string name="history">Historia</string>
+    <string name="search">Búsqueda</string>
+    <string name="changeLang">Cambiar idioma</string>
+    <string name="movieManager">Administrador de películas</string>
+    <string name="stars">Estrellas</string>
+    <string name="before">Antes de xx:yy</string>
+    <string name="after">Después xx:yy</string>
+    <string name="movieName">Nombre de pelicula</string>
+    <string name="username">Nombre de usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="passwordAgain">Contraseña nuevamente</string>
+</resources>

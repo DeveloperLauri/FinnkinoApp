@@ -40,7 +40,7 @@
             android:layout_marginStart="52dp"
             android:layout_marginTop="212dp"
             android:ems="10"
-            android:hint="Mistä xx:yy"
+            android:hint="@string/before"
             android:inputType="time"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
@@ -51,7 +51,7 @@
             android:layout_height="72dp"
             android:layout_marginTop="4dp"
             android:ems="10"
-            android:hint="Elokuvan nimi"
+            android:hint="@string/movieName"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
@@ -85,7 +85,7 @@
             android:layout_marginStart="40dp"
             android:layout_marginTop="212dp"
             android:ems="10"
-            android:hint="Mihin xx:yy"
+            android:hint="@string/after"
             android:inputType="time"
             app:layout_constraintStart_toEndOf="@+id/editTextTime"
             app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
@@ -97,7 +97,7 @@
             android:layout_marginStart="20dp"
 
             android:layout_marginTop="16dp"
-            android:text="Hae"
+            android:text="@string/search"
             app:layout_constraintStart_toEndOf="@+id/editTextDate"
             app:layout_constraintTop_toBottomOf="@+id/editTextMovie" />
 
@@ -116,7 +116,7 @@
             android:layout_height="34dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
-            android:text="Stars"
+            android:text="@string/stars"
             app:layout_constraintBottom_toTopOf="@+id/editTextTime2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"

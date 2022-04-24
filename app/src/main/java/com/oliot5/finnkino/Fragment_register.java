@@ -117,7 +117,7 @@ public class Fragment_register extends Fragment {
                     } catch (IOException e) {
                         e.printStackTrace();
                         string = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
-                                "<UsersInformation>\n" +
+                                "<UserInformation>\n" +
                                 "</UserInformation>";
                     }
 
