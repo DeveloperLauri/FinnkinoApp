@@ -7,8 +7,9 @@
 
     <ListView
         android:id="@+id/clickedMoviesListview"
-        android:layout_width="421dp"
-        android:layout_height="545dp"
+        android:layout_width="400dp"
+        android:layout_height="520dp"
+        android:layout_marginTop="130dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,8 +20,10 @@
         android:id="@+id/searchHistoryButton"
         android:layout_width="102dp"
         android:layout_height="53dp"
-        android:text="HAE"
+        android:layout_marginTop="28dp"
+        android:text="@string/search"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

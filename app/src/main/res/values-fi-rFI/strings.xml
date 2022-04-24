@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- to support also Finnish language -->
+    <string name="app_name">Finnkino</string>
+
+    <string name="change">Vaihda</string>
+    <string name="login">Kirjaudu</string>
+    <string name="register">Rekisteröidy</string>
+    <string name="history">Historia</string>
+    <string name="search">Hae</string>
+    <string name="changeLang">Vaihda kieli</string>
+    <string name="movieManager">Elokuva Manageri</string>
+    <string name="stars">Tähdet</string>
+    <string name="before">Ennen xx:yy</string>
+    <string name="after">Jälkeen xx:yy</string>
+    <string name="movieName">Elokuvan nimi</string>
+    <string name="username">Käyttäjänimi</string>
+    <string name="password">Salasana</string>
+    <string name="passwordAgain">Salasana uudestaan</string>
+</resources>

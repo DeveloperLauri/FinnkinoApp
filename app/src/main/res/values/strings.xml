@@ -1,3 +1,19 @@
 <resources>
+    <!-- to support also English language -->
     <string name="app_name">Finnkino</string>
+
+    <string name="change">Change</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="history">History</string>
+    <string name="search">Search</string>
+    <string name="changeLang">Change Language</string>
+    <string name="movieManager">Movie Manager</string>
+    <string name="stars">Stars</string>
+    <string name="before">Before xx:yy</string>
+    <string name="after">After xx:yy</string>
+    <string name="movieName">Movie Name</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="passwordAgain">Password again</string>
 </resources>
