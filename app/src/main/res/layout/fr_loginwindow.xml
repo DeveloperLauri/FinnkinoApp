@@ -9,10 +9,9 @@
         android:id="@+id/buttonLogin"
         android:layout_width="103dp"
         android:layout_height="59dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="76dp"
         android:text="@string/login"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPasswordLogin" />
 
@@ -46,9 +45,10 @@
         android:id="@+id/combinationCheckWindowLogin"
         android:layout_width="248dp"
         android:layout_height="35dp"
-        android:layout_marginTop="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonLogin"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.564"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPasswordLogin" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

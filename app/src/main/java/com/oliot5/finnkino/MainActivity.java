@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         //functionality for registrating ang login buttons
         View.OnClickListener listener = new View.OnClickListener() {
             Fragment fragment;
-
+            //functionality for changing fragments
             @Override
             public void onClick(View view) {
                 if ( view == findViewById(R.id.buttonToLogIn)){
@@ -121,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
         setLocale(lang1);
     }
 
+    //functionality to change activitet
     public void logIn(String un) {
         Intent intent = new Intent(MainActivity.this, MainActivity2.class);
         intent.putExtra("key", un);
@@ -129,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
         //startActivity(intent);
     }
 
-    // Method to do info change in between frag and activ
+    // Method to do info change in between fragment and activitet
     @Override
     public void onStart() {
         super.onStart();

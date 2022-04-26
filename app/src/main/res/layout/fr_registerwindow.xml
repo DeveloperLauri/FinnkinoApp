@@ -48,10 +48,9 @@
         android:id="@+id/registerButton"
         android:layout_width="121dp"
         android:layout_height="58dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="72dp"
         android:text="@string/register"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPasswordAgainRegister" />
 
@@ -59,8 +58,10 @@
         android:id="@+id/passwordCheckWindowRegister"
         android:layout_width="217dp"
         android:layout_height="34dp"
-        android:layout_marginTop="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/registerButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.546"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerButton" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextPasswordAgainRegister"
+        app:layout_constraintVertical_bias="0.473" />
 </androidx.constraintlayout.widget.ConstraintLayout>
