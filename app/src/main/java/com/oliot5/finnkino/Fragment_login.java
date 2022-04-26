@@ -126,10 +126,11 @@ public class Fragment_login extends Fragment {
                                 if (help == 1) {
                                     help = 2;
                                     sendToActivity(username);
+                                    break;
                                 }
 
                             } else {
-                                combinationCheckTextView.setText("Käyttäjänimi tai salasana on väärin.");
+                                combinationCheckTextView.setText(getContext().getResources().getString(R.string.srOrPsswrdWrng));
                             }
 
                         }
