@@ -5,25 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ListView
-        android:id="@+id/clickedMoviesListview"
-        android:layout_width="400dp"
-        android:layout_height="520dp"
-        android:layout_marginTop="130dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchHistoryButton"
-        app:layout_constraintVertical_bias="1.0" />
-
     <Button
         android:id="@+id/searchHistoryButton"
-        android:layout_width="102dp"
-        android:layout_height="53dp"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        app:icon="@drawable/ic_search"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
         android:layout_marginTop="28dp"
         android:text="@string/search"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/clickedMoviesListview"
+        android:layout_width="352dp"
+        android:layout_height="220dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchHistoryButton" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -186,7 +186,7 @@ public class Fragment_register extends Fragment {
 
 
                 } else {
-                    passwordCheckTextView.setText("Salasanat eivät täsmää.");
+                    passwordCheckTextView.setText(getContext().getResources().getString(R.string.pwrdsDntMtch));
                 }
             }
         });

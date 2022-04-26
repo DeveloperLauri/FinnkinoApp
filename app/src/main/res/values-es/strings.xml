@@ -9,7 +9,7 @@
     <string name="history">Historia</string>
     <string name="search">Búsqueda</string>
     <string name="changeLang">Cambiar idioma</string>
-    <string name="movieManager">Administrador de películas</string>
+    <string name="movieManager">Admin de películas</string>
     <string name="stars">Estrellas</string>
     <string name="before">Antes de xx:yy</string>
     <string name="after">Después xx:yy</string>
@@ -17,4 +17,6 @@
     <string name="username">Nombre de usuario</string>
     <string name="password">Contraseña</string>
     <string name="passwordAgain">Contraseña nuevamente</string>
+    <string name="pwrdsDntMtch">Las contraseñas no coinciden</string>
+    <string name="srOrPsswrdWrng">Usuario o contraseña incorrectos</string>
 </resources>

@@ -16,4 +16,6 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="passwordAgain">Password again</string>
+    <string name="pwrdsDntMtch">Passwords don\'t match</string>
+    <string name="srOrPsswrdWrng">Username or password is wrong</string>
 </resources>

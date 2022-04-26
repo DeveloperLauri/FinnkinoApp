@@ -17,4 +17,6 @@
     <string name="username">Käyttäjänimi</string>
     <string name="password">Salasana</string>
     <string name="passwordAgain">Salasana uudestaan</string>
+    '<string name="pwrdsDntMtch">Salasanat eivät täsmää</string>
+    <string name="srOrPsswrdWrng">Käyttäjänimi tai salasana on väärin</string>
 </resources>
