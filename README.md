@@ -1,4 +1,9 @@
-# FinnkinoApp
+#FinnkinoApp
+Description
+FinnkinoApp is an Android application designed to read XML data from a movie theater webpage and process it. The application allows users to input reviews for movies they have watched and saves these reviews to an XML file.
 
-This project was to create an Android app that reads XML- data from a .html page (data from a movie theater page) and processes it. The user can input reviews 
-for watched movies and save the reviews in an XML- file. The app has been verified to work with a real physical ANdroid cellphone.
+##Contributing
+Contributions to FinnkinoApp are always welcome.
+
+##License
+FinnkinoApp is licensed under the MIT License.
